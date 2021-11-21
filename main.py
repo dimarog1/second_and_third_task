@@ -2,19 +2,30 @@ import math
 import random
 import sys
 
-from PyQt5 import uic
+from PyQt5 import QtCore
 from PyQt5.QtCore import QPointF, Qt
 from PyQt5.QtGui import QBrush, QColor, QPainter
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QMainWindow
 
 
-class MyWidget(QMainWindow):
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(1343, 977)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "Супрематизм"))
+
+
+class MyWidget(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('Ui.ui')
-        self.resize(1343, 977)
-        self.setWindowTitle('Супрематизм')
+        self.setupUi(self)
         self.initUi()
         self.setMouseTracking(True)
 
